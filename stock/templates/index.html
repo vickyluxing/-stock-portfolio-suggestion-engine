@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href='{% static "loaders.css" %}' type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- 
+    <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.6.1.min.js"></script> -->
+    <script type='text/javascript'>
+    var jQuery132 = jQuery.noConflict(true);
+    </script>
+    <script>
+      jQuery132(document).ready(function(){
+        jQuery132('#loading').hide();
+        jQuery132("button").click(function(){
+          jQuery132('#loading').show();
+        });
+      });
+      </script>
+    <title>Stock Portfolio Suggestion Engine</title>
+
+</head>
+<body>
+       <div class="bg">
+      </div>
+       <div class="jumbotron">
+         <div class="container">
+            <h2><span class="glyphicon glyphicon-knight"></span>Stock Portfolio Suggestion</h2>
+         </div>
+      </div>
+<div class ="form">
+        <div class = "row">
+            <center><h3 style="color:white">Please select your investment strategies<br></br></h3>
+        </div>
+
+        <div class = "row">
+            <div id="inputForm">
+                <form method="POST" class="post-form">{% csrf_token %}
+
+                    {% for item in form %}
+                        <div class=" row" style="color:white">
+                            <div class="col-md-5 col-xs-5 text-right" >
+                                <span>{{ item.label }}</span>
+                            </div>
+
+                            <div class="col-md-6 col-xs-6" style="color:black">
+                                {{item}}
+                            </div>
+{#                                <div class="col-md-3 col-xs-3 text-left" >#}
+{#                                    <span> {{ item.help_text }}</span>#}
+{#                                </div>#}
+                        </div>
+                    {% endfor %}
+
+                    <div class="row">
+                        <br></br>
+                            <button type="submit" class="button button-block">Invest!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='loading'>Loading...<div class="loader-inner ball-pulse"><div></div></div></div>
+</body>
+</html>
+
+
+
+
+<style>
+   #loading{
+    z-index: 1;
+    padding: 10px 10px 5px;
+    background: #ffe6ff;
+    left: 0;
+    top: 0;
+    color: #fff;
+    position: fixed;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    box-shadow: 2px 2px 10px;
+    border-radius: 5px;
+   }
+   .bg {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color:transparent;
+   background: url(http://i.investopedia.com/content/short_article/top_preferred_stock_/stocks_istock535199427.jpg?quality=80&width=680&height=680) no-repeat #000;
+   background-size: cover;
+   z-index: -1;
+   }
+    .button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  /*-webkit-transition: all 0.5s ease;*/
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover, .button:focus {
+  background: #179b77;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
+}
+.jumbotron {
+        background-color: rgba(238, 238, 238, 0.52);
+    }
+.form {
+    background: rgba(19, 35, 47, 0.9);
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+label {
+    color: #fff;
+}
+</style>
